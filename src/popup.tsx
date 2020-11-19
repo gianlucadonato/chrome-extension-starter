@@ -3,6 +3,16 @@ import ReactDOM from "react-dom";
 import Popup from "./components/popup";
 import "./app.scss";
 
-chrome.tabs.query({ active: true, currentWindow: true }, () => {
-  ReactDOM.render(<Popup />, document.getElementById("popup"));
+import { Provider } from "react-redux";
+import { Store } from "webext-redux";
+
+const proxyStore = new Store();
+
+proxyStore.ready().then(() => {
+  ReactDOM.render(
+    <Provider store={proxyStore}>
+      <Popup />
+    </Provider>,
+    document.getElementById("popup"),
+  );
 });

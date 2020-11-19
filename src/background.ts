@@ -1,6 +1,8 @@
-function polling() {
-  console.log("polling");
-  setTimeout(polling, 1000 * 30);
-}
+import { createStore } from "redux";
+import rootReducer from "./reducers";
 
-polling();
+import { wrapStore } from "webext-redux";
+
+const store = createStore(rootReducer, {});
+
+wrapStore(store);
