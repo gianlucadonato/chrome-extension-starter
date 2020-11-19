@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Button } from "antd";
-import "./popup.scss";
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Button } from 'antd';
+import './popup.scss';
 
 export default function Popup() {
   const [counter, setCounter] = useState(0);
-  const clickCounter = useSelector((state) => state.count);
+  const clickCounter = useSelector(state => state.count);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -13,7 +13,7 @@ export default function Popup() {
   }, []);
 
   const clickCount = () => {
-    dispatch({ type: "ADD_COUNT" });
+    dispatch({ type: 'ADD_COUNT' });
   };
 
   const countUp = () => {
@@ -24,9 +24,7 @@ export default function Popup() {
   const changeBg = () => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs: any) => {
       const randomColor = Math.floor(Math.random() * 16777215).toString(16);
-      chrome.tabs.sendMessage(tabs[0].id, { color: `#${randomColor}` }, (msg) =>
-        console.log("result message:", msg),
-      );
+      chrome.tabs.sendMessage(tabs[0].id, { color: `#${randomColor}` }, msg => console.log('result message:', msg));
     });
   };
 

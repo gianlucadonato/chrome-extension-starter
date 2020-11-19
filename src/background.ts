@@ -1,7 +1,7 @@
-import { createStore } from "redux";
-import rootReducer from "./reducers";
+import { createStore } from 'redux';
+import rootReducer from './reducers';
 
-import { wrapStore } from "webext-redux";
+import { wrapStore } from 'webext-redux';
 
 const store = createStore(rootReducer, {});
 

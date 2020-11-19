@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "webpack --config webpack/webpack.dev.js --watch",
     "build": "webpack --config webpack/webpack.prod.js",
+    "lint": "eslint . --ext .ts,.tsx",
     "clean": "rimraf dist",
     "test": "npx jest"
   },
@@ -36,10 +37,12 @@
     "eslint-config-prettier": "^6.9.0",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^4.3.0",
     "jest": "^26.6.3",
+    "node-sass": "^5.0.0",
     "prettier": "^2.1.2",
     "rimraf": "^3.0.2 ",
-    "node-sass": "^5.0.0",
     "sass-loader": "^10.1.0",
     "style-loader": "^2.0.0",
     "ts-jest": "^26.4.4",
@@ -48,5 +51,10 @@
     "webpack": "^5.4.0",
     "webpack-cli": "^4.2.0",
     "webpack-merge": "^5.4.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsc --noEmit && npm run lint -- --fix"
+    }
   }
 }
